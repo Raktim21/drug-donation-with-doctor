@@ -36,7 +36,7 @@ active
                             <th scope="col">Brand</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Expire date</th>
-                            <th scope="col">Status</th>
+                            {{-- <th scope="col">Status</th> --}}
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

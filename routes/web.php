@@ -59,40 +59,40 @@ Route::prefix('admin')->group(function () {
         Route::middleware('admin')->group(function(){
 
             Route::controller(AdminController::class)->group(function(){
-               Route::get('admin', 'index')->name('admin.admin.index');
-               Route::get('admin/create', 'create')->name('admin.admin.create');
-               Route::post('admin', 'store')->name('admin.admin.store');
-               Route::get('admin/{id}/edit', 'edit')->name('admin.admin.edit');
-               Route::put('admin/{id}', 'update')->name('admin.admin.update');
-               Route::delete('admin/{id}', 'destroy')->name('admin.admin.destroy');
+               Route::get('admin', 'index')->name('admin.admin.index')->middleware('permission:admin-list');
+               Route::get('admin/create', 'create')->name('admin.admin.create')->middleware('permission:admin-create');
+               Route::post('admin', 'store')->name('admin.admin.store')->middleware('permission:admin-create');
+               Route::get('admin/{id}/edit', 'edit')->name('admin.admin.edit')->middleware('permission:admin-edit');
+               Route::put('admin/{id}', 'update')->name('admin.admin.update')->middleware('permission:admin-edit');
+               Route::delete('admin/{id}', 'destroy')->name('admin.admin.destroy')->middleware('permission:admin-delete');
             });
     
             Route::controller(UserController::class)->group(function(){
-                Route::get('users', 'index')->name('admin.users.index');
-                Route::get('users/create', 'create')->name('admin.users.create');
-                Route::post('users', 'store')->name('admin.users.store');
-                Route::get('users/{id}/edit', 'edit')->name('admin.users.edit');
-                Route::put('users/{id}', 'update')->name('admin.users.update');
-                Route::delete('users/{id}', 'destroy')->name('admin.users.destroy');
-                Route::post('users/active/{id}', 'makeActive')->name('admin.users.active');
+                Route::get('users', 'index')->name('admin.users.index')->middleware('permission:user-list');
+                Route::get('users/create', 'create')->name('admin.users.create')->middleware('permission:user-create');
+                Route::post('users', 'store')->name('admin.users.store')->middleware('permission:user-create');
+                Route::get('users/{id}/edit', 'edit')->name('admin.users.edit')->middleware('permission:user-edit');
+                Route::put('users/{id}', 'update')->name('admin.users.update')->middleware('permission:user-edit');
+                Route::delete('users/{id}', 'destroy')->name('admin.users.destroy')->middleware('permission:user-delete');
+                Route::post('users/active/{id}', 'makeActive')->name('admin.users.active')->middleware('permission:user-edit');
             });
         });
 
 
         Route::controller(DrugController::class)->group(function(){
-            Route::get('drugs', 'index')->name('user.drugs.index');
-            Route::get('drugs/create', 'create')->name('user.drugs.create');
-            Route::post('drugs', 'store')->name('user.drugs.store');
-            Route::delete('drugs/{id}', 'destroy')->name('user.drugs.destroy');
+            Route::get('drugs', 'index')->name('user.drugs.index')->middleware('permission:drug-list');
+            Route::get('drugs/create', 'create')->name('user.drugs.create')->middleware('permission:drug-create');
+            Route::post('drugs', 'store')->name('user.drugs.store')->middleware('permission:drug-create');
+            Route::delete('drugs/{id}', 'destroy')->name('user.drugs.destroy')->middleware('permission:drug-delete');
         });
 
 
 
         Route::controller(DrugShopController::class)->group(function(){
-            Route::get('drugshops', 'index')->name('user.drugshops.index');
-            Route::get('drugshops/request-list', 'requestList')->name('user.drugshops.requestList');
-            Route::post('drugshops/request-drug', 'requestDrug')->name('user.drugshops.requestDrug');
-            Route::post('drugshops/approve-request', 'approveRequest')->name('user.drugshops.approveRequest');
+            Route::get('drugshops', 'index')->name('user.drugshops.index')->middleware('permission:drugshop-list');
+            Route::get('drugshops/request-list', 'requestList')->name('user.drugshops.requestList')->middleware('permission:drugshop-request-list');
+            Route::post('drugshops/request-drug', 'requestDrug')->name('user.drugshops.requestDrug')->middleware('permission:drugshop-create');
+            Route::post('drugshops/approve-request', 'approveRequest')->name('user.drugshops.approveRequest')->middleware('permission:drugshop-edit');
         });
 
 
