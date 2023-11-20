@@ -19,6 +19,7 @@
         <div class="left-arrow" id="left-arrow">
             <i data-feather="arrow-left"></i>
         </div>
+        
         <div id="sidebar-menu">
             <ul class="sidebar-links" id="simple-bar">
                 <li class="back-btn">
@@ -84,6 +85,7 @@
 
             </ul>
         </div>
+
         <div class="right-arrow" id="right-arrow">
             <i data-feather="arrow-right"></i>
         </div>
