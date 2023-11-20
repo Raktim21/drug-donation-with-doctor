@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -25,7 +26,13 @@ class RolePermissionSeeder extends Seeder
                 $role = Role::create(['name' => $role]);
             }
         }
-        
+
+
+        $user = User::where('email', 'admin@admin.com')->first();
+
+        if ($user && !$user->hasRole('Admin')) {
+            $user->assignRole('Admin');
+        } 
 
         $permissions = [
             'admin-list',
@@ -78,6 +85,5 @@ class RolePermissionSeeder extends Seeder
         }
 
 
-        $permission = Permission::create(['name' => 'edit articles']);
     }
 }

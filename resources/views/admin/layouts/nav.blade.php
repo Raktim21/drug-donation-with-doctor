@@ -30,9 +30,9 @@
                         <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
                     </div>
                 </li>
-                <li class="sidebar-main-title">
+                {{-- <li class="sidebar-main-title">
                     <h6>Dashboard</h6>
-                </li>
+                </li> --}}
                 <li class="menu-box">
                     <ul>
                         <li class="sidebar-list">
@@ -46,25 +46,8 @@
 
                 @if (auth()->user()->is_admin == 1)
                     <li class="sidebar-main-title">
-                        <h6>Users</h6>
-                        <li class="menu-box">
-                            <ul>
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i data-feather="users"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="{{ route('admin.admin.index') }}">List</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.admin.create') }}">Create</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        {{-- <h6>Users</h6> --}}
+                        
         
                         <li class="menu-box">
                             <ul>

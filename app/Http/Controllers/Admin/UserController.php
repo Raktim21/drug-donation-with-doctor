@@ -3,22 +3,27 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     public function index(){
-        $users = User::where('is_admin', '=!' ,1)->latest('id')->paginate(10);
+        $users = User::latest('id')->paginate(10);
+
 
         return view('admin.users.index',compact('users'));
     }
 
 
 
-    public function create(){
+    public function create()
+    {
+        $roles = Role::all();
 
-        return view('admin.users.create');
+        return view('admin.users.create',compact('roles'));
     }
 
 
@@ -30,7 +35,18 @@ class UserController extends Controller
             'password_confirmation' => 'required',
             'password'              => 'required|confirmed',
             'avater'                => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg',
+            'role'                  => 'required|exsists:roles,id',
         ]);
+
+        $role = Role::findOrFail($request->role);
+
+        if ($role->name == 'Doctor') {
+            $request->validate([
+                'specialty'  => 'required',
+                'hospital'   => 'required',
+                'desigation' => 'required',
+            ]);
+        }
 
 
         $user = User::create([
@@ -52,7 +68,19 @@ class UserController extends Controller
         }
 
 
+        if ($role->name == 'Doctor') {
+            Doctor::create([
+                'user_id'       => $user->id,
+                'specialty'     => $request->specialty,
+                'hospital'      => $request->hospital,
+                'desigation'    => $request->desigation,
+            ]);
+        }
+
+
         return redirect()->route('admin.users.index')->with('success','User Created Successfully');
+
+
 
 
     }

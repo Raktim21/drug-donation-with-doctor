@@ -35,6 +35,7 @@ active
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Role</th>
                             <th scope="col">Created at</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -72,10 +73,19 @@ active
                                         <span class="badge badge-danger">Inactive</span>
                                     @else
                                         <span class="badge badge-success">Active</span>
-                                    @endif
-                                        
-                                        
+                                    @endif 
                                 </td>
+
+                                <td>
+                                    @if ($user->getRoleNames()[0] == 'Admin')
+                                        <span class="badge badge-success">Admin</span>
+                                    @elseif($user->getRoleNames()[0] == 'Doctor')
+                                        <span class="badge badge-info">Doctor</span>
+                                    @else
+                                        <span class="badge badge-primary">User</span>
+                                    @endif
+                                </td>
+
                                 <td>
                                     {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}
                                 </td>
