@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('drug_id')->constrained('drugs')->onDelete('cascade');
             $table->integer('quantity');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0)->comment('0 = Pending, 1 = Completed, 2 = Canceled, 3 = Picked, 4 = Delivered');
             $table->text('note')->nullable();
             $table->text('address')->nullable();
             $table->timestamps();

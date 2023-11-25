@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DrugController extends Controller
 {
     public function index(){
-        $drugs = Drug::latest('id')->paginate(20);
+        $drugs = Drug::where('user_id', auth()->user()->id)->latest('id')->paginate(20);
 
         return view('users.drugs.index', compact('drugs'));
     }
