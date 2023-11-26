@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('drugs', function (Blueprint $table) {
-            $table->foreignId('district_id')->nullable()->constrained('districts')->nullOnDelete();
-            $table->string('address')->nullable();
-
+            $table->string('sku')->nullable()->after('id');
+            $table->foreignId('district_id')->after('user_id')->nullable()->constrained('districts')->nullOnDelete();
+            $table->string('address')->nullable()->after('district_id');
+            $table->tinyInteger('status')->default(0)->comment('1=approved, 0=rejected')->after('address');
         });
     }
 
@@ -27,6 +28,8 @@ return new class extends Migration
             $table->dropForeign(['district_id']);
             $table->dropColumn('district_id');
             $table->dropColumn('address');
+            $table->dropColumn('status');
+            $table->dropColumn('sku');
         });
     }
 };

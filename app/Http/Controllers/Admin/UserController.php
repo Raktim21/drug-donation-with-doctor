@@ -28,14 +28,15 @@ class UserController extends Controller
 
 
     public function store(Request $request){
+        // dd($request->all());
         $request->validate([
             'name'                  => 'required',
             'email'                 => 'required|unique:users',
             'phone'                 => 'required',
             'password_confirmation' => 'required',
             'password'              => 'required|confirmed',
-            'avater'                => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg',
-            'role'                  => 'required|exsists:roles,id',
+            'avater'                => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'role'                  => 'required',
         ]);
 
         $role = Role::findOrFail($request->role);
@@ -66,6 +67,10 @@ class UserController extends Controller
             $user->avater = 'uploads/admin/avater/'.$image_name;
             $user->save();
         }
+
+
+        $role = Role::findOrFail($request->role);
+        $user->assignRole($role);
 
 
         if ($role->name == 'Doctor') {

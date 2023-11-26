@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -52,12 +53,14 @@ class RolePermissionSeeder extends Seeder
             'drug-request-edit',
             'order-list',
             'order-place',
+            'order-request-list',
+            'order-request-my-order',
         ];
 
 
         foreach ($permissions as $permission) {
             $per = Permission::where('name', $permission)->first();
-            if ($per === null) {
+            if ($per == null) {
                 $per = Permission::create(['name' => $permission]);
             }
 
@@ -65,6 +68,7 @@ class RolePermissionSeeder extends Seeder
             $admin->givePermissionTo($per);
 
             $user = Role::where('name', 'User')->first();
+            
             if (
                 $permission == 'drugshop-list' ||
                 $permission == 'drugshop-create' ||
@@ -74,11 +78,13 @@ class RolePermissionSeeder extends Seeder
                 $permission == 'drug-create' ||
                 $permission == 'drug-delete' || 
                 $permission == 'order-list' ||
-                $permission == 'order-place'
+                $permission == 'order-place' ||
+                $permission == 'order-request-list' ||
+                $permission == 'order-request-my-order'
             ) {
-                if ($user->hasPermissionTo($permission)) {
-                    $user->givePermissionTo($per);
-                }
+                
+                $user->givePermissionTo($per);
+                
             }
 
             // $doctor = Role::where('name', 'Doctor')->first();

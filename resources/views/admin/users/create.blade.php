@@ -41,21 +41,21 @@ active
                         <div class="col-md-6 form-group mb-3">
                             <div class="mb-6">
                                 <label class="form-label" for="name">Name</label>
-                                <input class="form-control" type="text" id="name" name="name" placeholder="Name">
+                                <input class="form-control" type="text" id="name" name="name" placeholder="Name" value="{{ old('name') }}">
                             </div>
                         </div>
     
                         <div class="col-md-6 form-group mb-3">
                             <div class="mb-6">
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" id="email" name="email" type="email" placeholder="Email">
+                                <input class="form-control" id="email" name="email" type="email" placeholder="Email" value="{{ old('email') }}">
                             </div>
                         </div>
     
                         <div class="col-md-6 form-group mb-3">
                             <div class="mb-6">
                                 <label class="form-label" for="phone" >Phone</label>
-                                <input class="form-control" id="phone" name="phone" type="phone" placeholder="Phone">
+                                <input class="form-control" id="phone" name="phone" type="phone" placeholder="Phone" value="{{ old('phone') }}">
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@ active
                         <div class="col-md-6 form-group mb-3">
                             <div class="mb-6">
                                 <label class="form-label" for="roles" >Roles</label>
-                                <select class="form-control" name="roles" id="roles" required>
+                                <select class="form-control" name="role" id="roles" required>
                                     <option value="">--Select--</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>

@@ -33,15 +33,6 @@ class AuthenticatedSessionController extends Controller
             return redirect()->back()->withInput($request->only('email'));
         }
 
-        if ($user->is_active == 0) {
-            return redirect()->back()->with('error', 'Your account is not active');
-        }
-
-
-        if ($user->is_admin != 1) {
-            return redirect('/')->with('error', 'You are not an admin'); 
-        }
-
         $request->authenticate();
 
         $request->session()->regenerate();

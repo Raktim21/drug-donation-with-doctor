@@ -10,7 +10,7 @@ class DrugShopController extends Controller
 {
     public function index()
     {
-        $drugs = Drug::where('quantity','>',0)->orderBy('id','desc')->where('status',1)->get();
+        $drugs = Drug::where('quantity','>',0)->where('status',1)->where('user_id','!=',auth()->user()->id)->orderBy('id','desc')->get();
 
         return view('users.drugshops.index',compact('drugs'));
     }
@@ -20,11 +20,19 @@ class DrugShopController extends Controller
     public function order(Request $request,$id)
     {
         $request->validate([
-            'quantity' => 'required',
+            'quantity' => 'required|max:10',
         ]);
 
 
         $drug = Drug::find($id);
+
+        if ($drug->quantity < $request->quantity) {
+            return redirect()->back()->with('error','Quantity is not available');
+        }
+
+        if ($drug->user_id == auth()->user()->id) {
+            return redirect()->back()->with('error','You cannot order your own drug');
+        }
 
         $order = new Order();
         $order->code        = $id . '-' . hexdec(uniqid());
@@ -37,6 +45,51 @@ class DrugShopController extends Controller
         
         return redirect()->back()->with('success','Order placed successfully');
         
+    }
+
+
+    public function myOrder()
+    {
+        $orders = Order::where('customer_id',auth()->user()->id)->get();
+        return view('users.drugshops.my_orders',compact('orders'));
+    }
+
+
+
+
+    public function myOrderCancel($id)
+    {
+        $orders = Order::find($id);
+
+        if ($orders->status != 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Order is not cancelable'
+            ], 401);
+        }
+        $orders->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Order cancel successfully'
+        ], 202);
+    }
+
+
+
+    public function requests()
+    {
+        $orders = Order::where('seller_id',auth()->user()->id)->get();
+        return view('users.drugshops.my_request',compact('orders'));
+    }
+
+
+    public function requestApprove($id)
+    {
+        $orders = Order::find($id);
+        $orders->status = 1;
+        $orders->save();
+
+        return redirect()->back()->with('success','Request approved successfully');
     }
 
 

@@ -47,9 +47,9 @@ Route::middleware('guest')->group(function () {
 
 
 
-Route::prefix('admin')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
     
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+    // Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('update/password', [ProfileController::class, 'passwordUpdate'])->name('password.update');
@@ -86,6 +86,10 @@ Route::prefix('admin')->group(function () {
     Route::controller(DrugShopController::class)->group(function(){
         Route::get('order/index', 'index')->name('admin.drug-shops.index')->middleware('permission:order-list');
         Route::post('order/order/{id}', 'order')->name('admin.drug-shops.order')->middleware('permission:order-place');
+        Route::get('order/my-orders', 'myOrder')->name('admin.drug-shops.my-order')->middleware('permission:order-request-my-order');
+        Route::delete('order/my-orders/cancel/{id}', 'myOrderCancel')->name('admin.drug-shops.my-order-cancel')->middleware('permission:order-request-my-order');
+        Route::get('order/requests', 'requests')->name('admin.drug-shops.requests')->middleware('permission:order-request-list');
+        Route::get('order/requests/approve/{id}', 'requestApprove')->name('admin.drug-shops.requests-approve')->middleware('permission:order-request-list');
     });
 
 });

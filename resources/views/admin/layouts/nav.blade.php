@@ -1,6 +1,6 @@
 <div>
     <div class="logo-wrapper">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ route('admin.drug-shops.index') }}">
             <img class="img-fluid for-light" src="{{ asset('admin_dashboard/assets/images/logo/logo.png') }}" alt="">
         </a>
         <div class="back-btn">
@@ -11,7 +11,7 @@
         </div> --}}
     </div>
     <div class="logo-icon-wrapper">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ route('admin.drug-shops.index') }}">
             <img class="img-fluid" src="{{ asset('admin_dashboard/assets/images/logo/logo-icon1.png') }}" alt="">
         </a>
     </div>
@@ -23,7 +23,7 @@
         <div id="sidebar-menu">
             <ul class="sidebar-links" id="simple-bar">
                 <li class="back-btn">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('admin.drug-shops.index') }}">
                         <img class="img-fluid" src="{{ asset('admin_dashboard/assets/images/logo/logo-icon.png') }}" alt="">
                     </a>
                     <div class="mobile-back text-end">
@@ -34,7 +34,7 @@
                 {{-- <li class="sidebar-main-title">
                     <h6>Dashboard</h6>
                 </li> --}}
-                <li class="menu-box">
+                {{-- <li class="menu-box">
                     <ul>
                         <li class="sidebar-list">
                             <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.dashboard') }}">
@@ -43,12 +43,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <li class="sidebar-main-title">
-                    {{-- <h6>Users</h6> --}}
-                    
-    
+                @can('user-list')
                     <li class="menu-box">
                         <ul>
                             <li class="sidebar-list">
@@ -67,7 +64,8 @@
                             </li>
                         </ul>
                     </li>
-                </li>
+                @endcan
+                
 
                 <li class="menu-box">
                     <ul>
@@ -78,15 +76,15 @@
                             </a>
                         </li>
                         <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav active" href="#!">
+                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.my-order') }}">
                                 <i data-feather="home"></i>
-                                <span>Orers</span>
+                                <span>My Orers</span>
                             </a>
                         </li>
                         <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav active" href="#!">
+                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.requests') }}">
                                 <i data-feather="home"></i>
-                                <span>Drug Requests</span>
+                                <span>My Requests</span>
                             </a>
                         </li>
                         <li class="sidebar-list">
