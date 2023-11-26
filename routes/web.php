@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\DrugRequestController;
+use App\Http\Controllers\Admin\FrontendController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DrugController;
@@ -28,9 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 // require __DIR__.'/auth.php';
 
-Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
-});
+Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 
 
 

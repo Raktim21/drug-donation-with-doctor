@@ -1,0 +1,32 @@
+@media(min-width:992px) {
+    .input-castom {
+        width: 43% !important;
+    }
+    .form-castom {
+        display: block;
+    }
+    .search-section .form-inlinee input {
+        display: inline-block;
+    }
+    .gradient {
+        height: 361px;
+    }
+}
+@media(max-width:991px){
+    .appointe-into-div{
+    padding: 0px 100px;
+    }
+}
+@media(max-width:767px){
+    .appointe-into-div{
+    padding: 0px 0px;
+    }
+	.input-castom {
+        width: 42%;
+    }
+}
+@media(max-width:530px){
+		.input-castom {
+        width: 100%;
+    }
+}
