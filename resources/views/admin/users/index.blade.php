@@ -25,101 +25,105 @@ active
                     </div>
                 </div>
             </div> 
-            <div class="table-responsive table-hover">
-                <table class="table">
-                    <thead>
-                        <tr class="border-bottom-primary">
-                            <th scope="col">Id</th>
-                            <th scope="col">Avater</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($users as $user )
-                            <tr>
-
-                                <td scope="row">
-                                    {{ $user->id }}
-                                </th>
-                                <td>
-                                    @if ($user->avater)
-                                        <img src="{{ asset($user->avater) }}" alt="avater" width="50px" height="50px">
-                                    @else
-                                        <img src="{{ asset('uploads/admin/avater/demo_avater.png') }}" alt="avater" width="50px" height="50px">
-                                    @endif
-                                </td>
-                                <td>
-                                    {{ $user->name }}
-                                </td>
-                                <td>
-                                    {{ $user->email }}
-                                </td>
-                                <td>
-                                    @if ($user->phone)
-                                        {{ $user->phone }}
-                                    @else
-                                        <span class="text-danger">N/A</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($user->is_active == 0)
-                                        <span class="badge badge-danger">Inactive</span>
-                                    @else
-                                        <span class="badge badge-success">Active</span>
-                                    @endif 
-                                </td>
-
-                                <td>
-                                    @if ($user->getRoleNames()[0] == 'Admin')
-                                        <span class="badge badge-success">Admin</span>
-                                    @elseif($user->getRoleNames()[0] == 'Doctor')
-                                        <span class="badge badge-info">Doctor</span>
-                                    @else
-                                        <span class="badge badge-primary">User</span>
-                                    @endif
-                                </td>
-
-                                <td>
-                                    {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}
-                                </td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        {{-- <button class="btn btn-outline-warning" type="button">Edit</button> --}}
-
-                                        @if ($user->is_active == 0)
-                                            <button class="btn btn-outline-success sweet-6" data-id="{{ $user->id }}" type="button">Active</button>
-                                        @else
-                                            <button class="btn btn-outline-danger sweet-6" data-id="{{ $user->id }}" type="button">Deactive</button>
-                                        @endif
-
-                                    </div>
-                                </td>
-
+            <div class="card-body">
+                <div class="table-responsive table-hover">
+                    <table class="table" id="basic-1">
+                        <thead>
+                            <tr class="border-bottom-primary">
+                                <th scope="col">Id</th>
+                                <th scope="col">Avater</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Created at</th>
+                                <th scope="col">Action</th>
                             </tr>
-                            
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+    
+                            @foreach ($users as $user )
+                                <tr>
+    
+                                    <td scope="row">
+                                        {{ $user->id }}
+                                    </th>
+                                    <td>
+                                        @if ($user->avater)
+                                            <img src="{{ asset($user->avater) }}" alt="avater" width="50px" height="50px">
+                                        @else
+                                            <img src="{{ asset('uploads/admin/avater/demo_avater.png') }}" alt="avater" width="50px" height="50px">
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ $user->name }}
+                                    </td>
+                                    <td>
+                                        {{ $user->email }}
+                                    </td>
+                                    <td>
+                                        @if ($user->phone)
+                                            {{ $user->phone }}
+                                        @else
+                                            <span class="text-danger">N/A</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($user->is_active == 0)
+                                            <span class="badge badge-danger">Inactive</span>
+                                        @else
+                                            <span class="badge badge-success">Active</span>
+                                        @endif 
+                                    </td>
+                                    <td>
+                                        @if (count($user->getRoleNames()) > 0)
+                                            @if ($user->getRoleNames()[0] == 'Admin')
+                                                <span class="badge badge-success">Admin</span>
+                                            @elseif($user->getRoleNames()[0] == 'Doctor')
+                                                <span class="badge badge-info">Doctor</span>
+                                            @else
+                                                <span class="badge badge-primary">User</span>
+                                            @endif
+                                        @else
+                                            <span class="badge badge-danger">N/A</span>
+                                        @endif
+                                    </td>
+    
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            {{-- <button class="btn btn-outline-warning" type="button">Edit</button> --}}
+    
+                                            @if ($user->is_active == 0)
+                                                <button class="btn btn-success sweet-6" data-id="{{ $user->id }}" type="button">Active</button>
+                                            @else
+                                                <button class="btn btn-danger sweet-6" data-id="{{ $user->id }}" type="button">Deactive</button>
+                                            @endif
+    
+                                        </div>
+                                    </td>
+    
+                                </tr>
+                                
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
+           
         </div>
-        <div class="card-body">
-            {{ $users->render() }}
-        </div>
-
-
     </div>
 </div>
 @endsection
 
 
 @section('js')
+
+<script src="{{ asset('admin_dashboard/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin_dashboard/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
 
 <script>
     $(document).ready(function () {

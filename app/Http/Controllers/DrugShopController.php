@@ -10,45 +10,32 @@ class DrugShopController extends Controller
 {
     public function index()
     {
-        $drugs = Drug::where('user_id', auth()->user()->id)->latest('id')->paginate(20);
+        $drugs = Drug::where('quantity','>',0)->orderBy('id','desc')->where('status',1)->get();
 
-        return view('user.drugshops.index',compact('drugs'));
+        return view('users.drugshops.index',compact('drugs'));
     }
 
 
 
     public function order(Request $request,$id)
     {
-
         $request->validate([
-            'quantity' => 'required|numeric',
-            'note'     => 'required|string',
-            'address'  => 'required|string',
+            'quantity' => 'required',
         ]);
 
 
-        $drug = Drug::findOrFail($id);
+        $drug = Drug::find($id);
 
-        if ($drug->quantity < $request->quantity) {
-
-            return redirect()->back()->with('error','Stock is not enough');
-        }
-
-
-        $drup_order = new Order();
-        $drup_order->user_id = auth()->user()->id;
-        $drup_order->drug_id = $drug->id;
-        $drup_order->quantity = $request->quantity;
-        $drup_order->note = $request->note;
-        $drup_order->address = $request->address;
-        $drup_order->save();
+        $order = new Order();
+        $order->code        = $id . '-' . hexdec(uniqid());
+        $order->customer_id = auth()->user()->id;
+        $order->seller_id   = $drug->user_id;
+        $order->drug_id     = $id;
+        $order->quantity    = $request->quantity;
+        $order->save();
 
         
-        $drug->quantity -= $request->quantity;
-        $drug->save();
-
-
-        return redirect()->back()->with('success','Order created successfully');
+        return redirect()->back()->with('success','Order placed successfully');
         
     }
 

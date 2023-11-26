@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->foreignId('customer_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('seller_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('drug_id')->constrained('drugs')->onDelete('cascade');
             $table->integer('quantity');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->integer('status')->default(0)->comment('0 = Pending, 1 = Completed, 2 = Canceled, 3 = Picked, 4 = Delivered');
-            $table->text('note')->nullable();
-            $table->text('address')->nullable();
+            $table->tinyInteger('status')->default(0)->comment('0: pending, 1: completed, 2: approved');
             $table->timestamps();
         });
     }

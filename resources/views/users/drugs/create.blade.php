@@ -73,6 +73,26 @@ active
                             </div>
                         </div>
 
+
+                        <div class="col-md-6 from-group mb-3">
+                            <div class="mb-6">
+                                <label class="form-label" for="district">District <span class="text-danger">*</span></label>
+                                <select class="form-control" name="district" id="district">
+                                    <option value="">--Select--</option>
+                                    @foreach ($districts as $district)
+                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 from-group mb-3">
+                            <div class="mb-6">
+                                <label class="form-label" for="address">Address <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="address" name="address" placeholder="Address" required>
+                            </div>
+                        </div>
+
                         <div class="col-md-12 from-group mb-3">
                             <div class="mb-6">
                                 <label class="form-label" for="description">Description</label>
@@ -83,7 +103,7 @@ active
                     </div>
                 </div>
                 <div class="card-footer text-end">
-                    <button class="btn btn-primary" type="submit">Create user</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                 </div>
             </form>
         </div>

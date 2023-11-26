@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/vendors/sweetalert2.css') }}">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/vendors/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/vendors/bootstrap.css') }}">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/style.css') }}">

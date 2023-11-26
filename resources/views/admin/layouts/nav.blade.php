@@ -45,35 +45,50 @@
                     </ul>
                 </li>
 
-                @if (auth()->user()->is_admin == 1)
-                    <li class="sidebar-main-title">
-                        {{-- <h6>Users</h6> --}}
-                        
-        
-                        <li class="menu-box">
-                            <ul>
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i data-feather="users"></i>
-                                        <span>Users</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="{{ route('admin.users.index') }}">List</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.users.create') }}">Create</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                <li class="sidebar-main-title">
+                    {{-- <h6>Users</h6> --}}
+                    
+    
+                    <li class="menu-box">
+                        <ul>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                    <i data-feather="users"></i>
+                                    <span>Users</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li>
+                                        <a href="{{ route('admin.users.index') }}">List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.users.create') }}">Create</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
-                @endif
-
+                </li>
 
                 <li class="menu-box">
                     <ul>
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.index') }}">
+                                <i data-feather="home"></i>
+                                <span>Drug Shop</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav active" href="#!">
+                                <i data-feather="home"></i>
+                                <span>Orers</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav active" href="#!">
+                                <i data-feather="home"></i>
+                                <span>Drug Requests</span>
+                            </a>
+                        </li>
                         <li class="sidebar-list">
                             <a class="sidebar-link sidebar-title link-nav active" href="{{ route('user.drugs.index') }}">
                                 <i data-feather="home"></i>
@@ -83,6 +98,21 @@
                     </ul>
                 </li>
 
+
+
+                @can('drug-request-list')
+                    <li class="menu-box">
+                        <ul>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-requests.index') }}">
+                                    <i data-feather="home"></i>
+                                    <span>Drug Approvel</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+                
             </ul>
         </div>
 

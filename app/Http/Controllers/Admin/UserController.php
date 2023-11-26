@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::latest('id')->paginate(10);
+        $users = User::latest('id')->get();
 
 
         return view('admin.users.index',compact('users'));

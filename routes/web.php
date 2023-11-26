@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\DrugRequestController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DrugController;
@@ -72,16 +73,21 @@ Route::prefix('admin')->group(function () {
         Route::get('drugs/create', 'create')->name('user.drugs.create')->middleware('permission:drug-create');
         Route::post('drugs', 'store')->name('user.drugs.store')->middleware('permission:drug-create');
         Route::delete('drugs/{id}', 'destroy')->name('user.drugs.destroy')->middleware('permission:drug-delete');
+        Route::post('drugs/update-quantity/{id}', 'updateQuantity')->name('user.drugs.updateQuantity')->middleware('permission:drug-create');
     });
 
+
+    Route::controller(DrugRequestController::class)->group(function(){
+        Route::get('drug-requests', 'index')->name('admin.drug-requests.index')->middleware('permission:drug-request-list');
+        Route::get('drug-requests/{id}', 'update')->name('admin.drug-requests.update')->middleware('permission:drug-request-edit');
+    });
 
 
     Route::controller(DrugShopController::class)->group(function(){
-        Route::get('drugshops', 'index')->name('user.drugshops.index')->middleware('permission:drugshop-list');
-        Route::get('drugshops/request-list', 'requestList')->name('user.drugshops.requestList')->middleware('permission:drugshop-request-list');
-        Route::post('drugshops/request-drug', 'requestDrug')->name('user.drugshops.requestDrug')->middleware('permission:drugshop-create');
-        Route::post('drugshops/approve-request', 'approveRequest')->name('user.drugshops.approveRequest')->middleware('permission:drugshop-edit');
+        Route::get('order/index', 'index')->name('admin.drug-shops.index')->middleware('permission:order-list');
+        Route::post('order/order/{id}', 'order')->name('admin.drug-shops.order')->middleware('permission:order-place');
     });
+
 });
 
 

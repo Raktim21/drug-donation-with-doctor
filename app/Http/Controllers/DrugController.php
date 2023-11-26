@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use App\Models\Drug;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class DrugController extends Controller
 
 
     public function create(){
-        return view('users.drugs.create');
+        $districts = District::orderBy('name', 'asc')->get();
+        return view('users.drugs.create', compact('districts'));
     }
 
 
@@ -29,10 +31,13 @@ class DrugController extends Controller
             'brand'       => 'required|string|max:255',
             'exp_date'    => 'required|date',
             'photo'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'district'    => 'required|exists:districts,id',
+            'address'     => 'required|string|max:255',
         ]);
 
 
         $drug = new Drug();
+        $drug->sku         = rand(100000, 999999);
         $drug->name        = $request->name;
         $drug->description = $request->description;
         $drug->quantity    = $request->quantity;
@@ -40,6 +45,8 @@ class DrugController extends Controller
         $drug->brand       = $request->brand;
         $drug->exp_date    = Carbon::parse($request->exp_date);
         $drug->user_id     = auth()->user()->id;
+        $drug->district_id = $request->district;
+        $drug->address     = $request->address;
         $drug->save();
 
 
@@ -55,6 +62,22 @@ class DrugController extends Controller
 
         return redirect()->route('user.drugs.index')->with('success','Drug Created Successfully');
         
+    }
+
+
+    public function updateQuantity(Request $request, $id){
+        $request->validate([
+            'exp_date' => 'required|date',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+
+        $drug = Drug::findOrFail($id);
+        $drug->exp_date = Carbon::parse($request->exp_date);
+        $drug->quantity = $request->quantity;
+        $drug->save();
+
+        return redirect()->back()->with('success','Drug Quantity Updated Successfully');
     }
 
 

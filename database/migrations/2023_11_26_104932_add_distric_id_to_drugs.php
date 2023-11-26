@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('drugs', function (Blueprint $table) {
-            $table->string('sku')->nullable();
-            $table->tinyInteger('status')->default(0)->comment('0 = inactive, 1 = active');
+            $table->foreignId('district_id')->nullable()->constrained('districts')->nullOnDelete();
+            $table->string('address')->nullable();
+
         });
     }
 
@@ -23,8 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('drugs', function (Blueprint $table) {
-            $table->dropColumn('sku');
-            $table->dropColumn('status');
+            $table->dropForeign(['district_id']);
+            $table->dropColumn('district_id');
+            $table->dropColumn('address');
         });
     }
 };

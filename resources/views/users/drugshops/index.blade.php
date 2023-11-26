@@ -40,7 +40,7 @@ active
                                 <th scope="col">Expire date</th>
                                 <th scope="col">District</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">Status</th>
+                                {{-- <th scope="col">Status</th> --}}
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -95,45 +95,40 @@ active
                                         {{ $drug->address }}
                                     </td>
 
-                                    <td>
+                                    {{-- <td>
                                         @if ($drug->status == 0)
                                             <span class="badge badge-danger">Inactive</span>
                                         @else
                                             <span class="badge badge-success">Active</span>
                                             
                                         @endif
-                                    </td>
+                                    </td> --}}
     
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#qnt_update_{{ $drug->id }}">Edit</button>
-                                            <button class="btn btn-danger sweet-6" data-id="{{ $drug->id }}" type="button">Delete</button>
+                                            <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#order_{{ $drug->id }}">Place Order</button>
                                         </div>
                                     </td>
                                 </tr>
     
-                                <div class="modal fade" id="qnt_update_{{ $drug->id }}" tabindex="-1" role="dialog" aria-labelledby="qnt_update" aria-hidden="true">
+                                <div class="modal fade" id="order_{{ $drug->id }}" tabindex="-1" role="dialog" aria-labelledby="qnt_update" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Update</h5>
+                                                <h5 class="modal-title">Order</h5>
                                                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form action="{{ route('user.drugs.updateQuantity', $drug->id) }}" method="POST">
+                                            <form action="{{ route('admin.drug-shops.order', $drug->id) }}" method="POST">
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="exp_date">Expiry date</label>
-                                                        <input class="form-control" type="date" id="exp_date" name="exp_date" value="{{ \Carbon\Carbon::parse($drug->exp_date)->format('Y-m-d') }}" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="quantity">Quantity</label>
+                                                        <label class="form-label" for="quantity">Quantity <span class="text-danger">*</span></label>
                                                         <input type="number" class="form-control" name="quantity" value="{{ $drug->quantity }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-                                                    <button class="btn btn-primary" type="submit">Save changes</button>
+                                                    <button class="btn btn-primary" type="submit">Request Order</button>
                                                 </div>
                                             </form>
                                         </div>

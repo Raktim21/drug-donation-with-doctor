@@ -100,45 +100,16 @@ active
                                             <span class="badge badge-danger">Inactive</span>
                                         @else
                                             <span class="badge badge-success">Active</span>
-                                            
                                         @endif
                                     </td>
     
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#qnt_update_{{ $drug->id }}">Edit</button>
-                                            <button class="btn btn-danger sweet-6" data-id="{{ $drug->id }}" type="button">Delete</button>
+                                            <a class="btn btn-success" href="{{ route('admin.drug-requests.update', $drug->id) }}">Approve</a>
                                         </div>
                                     </td>
                                 </tr>
-    
-                                <div class="modal fade" id="qnt_update_{{ $drug->id }}" tabindex="-1" role="dialog" aria-labelledby="qnt_update" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Update</h5>
-                                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="{{ route('user.drugs.updateQuantity', $drug->id) }}" method="POST">
-                                                @csrf
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="exp_date">Expiry date</label>
-                                                        <input class="form-control" type="date" id="exp_date" name="exp_date" value="{{ \Carbon\Carbon::parse($drug->exp_date)->format('Y-m-d') }}" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="quantity">Quantity</label>
-                                                        <input type="number" class="form-control" name="quantity" value="{{ $drug->quantity }}" required>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-                                                    <button class="btn btn-primary" type="submit">Save changes</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 
                             @endforeach
                         </tbody>

@@ -38,26 +38,20 @@ class RolePermissionSeeder extends Seeder
         $permissions = [
             'admin-list',
             'admin-create',
-            'admin-create',
-            'admin-edit',
             'admin-edit',
             'admin-delete',
             'user-list',
             'user-create',
             'user-create',
             'user-edit',
-            'user-edit',
             'user-delete',
-            'user-edit',
             'drug-list',
             'drug-create',
-            'drug-create',
             'drug-delete',
-
-            'drugshop-list',
-            'drugshop-request-list',
-            'drugshop-create',
-            'drugshop-edit',
+            'drug-request-list',
+            'drug-request-edit',
+            'order-list',
+            'order-place',
         ];
 
 
@@ -74,7 +68,13 @@ class RolePermissionSeeder extends Seeder
             if (
                 $permission == 'drugshop-list' ||
                 $permission == 'drugshop-create' ||
-                $permission == 'drugshop-edit'
+                $permission == 'drugshop-edit' ||
+                $permission == 'drug-list' ||
+                $permission == 'drug-edit' ||
+                $permission == 'drug-create' ||
+                $permission == 'drug-delete' || 
+                $permission == 'order-list' ||
+                $permission == 'order-place'
             ) {
                 if ($user->hasPermissionTo($permission)) {
                     $user->givePermissionTo($per);
