@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('admin.auth.register');
+        $roles = Role::all();
+        return view('admin.auth.register', compact('roles'));
     }
 
     /**
@@ -36,14 +38,30 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'role' => ['required|exists:roles,id'],
         ]);
 
+        if ($request->role == '3') {
+            $request->validate([
+                'specialty'  => 'required',
+                'hospital'   => 'required',
+                'desigation' => 'required',
+            ]);
+        }
+
+        $role = Role::find($request->role);
+
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'password'   => Hash::make($request->password),
+            'specialty'  => $request->specialty ?? null,
+            'hospital'   => $request->hospital ?? null,
+            'desigation' => $request->desigation ?? null,
         ]);
+
+        $user->assignRole($role->name);
 
         event(new Registered($user));
 

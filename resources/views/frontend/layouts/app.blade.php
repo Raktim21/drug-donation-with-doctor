@@ -48,13 +48,15 @@
 						</div> --}}
 						<div class="login d-inline">
 							<a class="btn" href="{{ route('admin.login') }}">
-
                                 {{ Auth::check() ? 'Profile' : 'Login' }}
                             </a>
 						</div>
-						{{-- <div class="register d-inline">
-							<a href="registation.html"><button type="button" class="btn">register</button></a>
-						</div> --}}
+
+						@if (!Auth::check())
+							<div class="register d-inline">
+								<a href="{{ route('register') }}"><button type="button" class="btn">register</button></a>
+							</div>
+						@endif
 						
 					</div>
 				</div>

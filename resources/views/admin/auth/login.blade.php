@@ -109,8 +109,8 @@
                         <div class="login-card">
                             <div>
                                 <div>
-                                    <a class="logo" href="index.html">
-                                        <img class="img-fluid for-light" src="{{ asset('admin_dashboard/assets/images/logo/login.png') }}" alt="loginpage">
+                                    <a class="logo" href="{{ route('frontend.index') }}">
+                                        <img class="img-fluid for-light" src="{{asset('admin_dashboard/assets/images/logo/logo-2.png')}}" width="400" alt="loginpage">
                                     </a>
                                 </div>
                                 <div class="login-main"> 
@@ -152,7 +152,7 @@
                                             <li><a href="https://www.instagram.com" target="_blank"><i data-feather="instagram"></i></a></li>
                                             </ul>
                                         </div> --}}
-                                        {{-- <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="sign-up.html">Create Account</a></p> --}}
+                                        <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="{{ route('register') }}">Create Account</a></p>
                                     </form>
                                 </div>
                             </div>

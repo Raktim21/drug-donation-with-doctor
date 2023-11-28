@@ -20,7 +20,6 @@ class RolePermissionSeeder extends Seeder
             'Admin',
             'User',
             'Doctor',
-            'Delivery'
         ];
         
         foreach ($roles as $role) {

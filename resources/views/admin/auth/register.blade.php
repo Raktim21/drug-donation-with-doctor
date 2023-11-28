@@ -63,15 +63,9 @@
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_dashboard/assets/css/vendors/font-awesome.css')}}">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin_dashboard/assets/css/vendors/icofont.css')}}">
@@ -107,8 +101,8 @@
                 <div class="login-card">
                     <div>
                         <div>
-                            <a class="logo text-center" href="index.html">
-                                <img class="img-fluid for-light" src="{{asset('admin_dashboard/assets/images/logo/login.png')}}" alt="loginpage">
+                            <a class="logo text-center" href="{{ route('frontend.index') }}">
+                                <img class="img-fluid for-light" src="{{asset('admin_dashboard/assets/images/logo/logo-2.png')}}" width="400" alt="loginpage">
                             </a>
                         </div>
                         <div class="login-main">
@@ -128,14 +122,14 @@
 
                                 <div class="form-group">
                                     <label class="col-form-label">Phone</label>
-                                    <input class="form-control" type="text" name="phone" required="" placeholder="Test@gmail.com" required>
+                                    <input class="form-control" type="text" name="phone" required="" placeholder="017******" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
                                     <div class="form-input position-relative">
                                         <input class="form-control" type="password" name="password" required="" placeholder="*********" required>
-                                        <div class="show-hide"><span class="show"></span></div>
+                                        {{-- <div class="show-hide"><span class="show"></span></div> --}}
                                     </div>
                                 </div>
 
@@ -143,15 +137,33 @@
                                     <label class="col-form-label">Confirm Password</label>
                                     <div class="form-input position-relative">
                                         <input class="form-control" type="password" name="password_confirmation" required="" placeholder="*********" required>
-                                        <div class="show-hide"><span class="show"></span></div>
+                                        {{-- <div class="show-hide"><span class="show"></span></div> --}}
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="roles" >Roles</label>
+                                    <select class="form-control" name="role" id="roles" required>
+                                        <option value="">--Select--</option>
+                                        @foreach ($roles as $role)
+                                            @if ($role->name != 'Admin')
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option> 
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div id="add_body">
+
+                                </div>
+
+
                                 <div class="form-group">
                                     <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Create Account</button>
                                 </div>
                             
                                 <p class="mt-4 mb-0 text-center">Already have an account?
-                                    <a class="ms-2" href="login.html">Sign in</a>
+                                    <a class="ms-2" href="{{ route('admin.login') }}">Sign in</a>
                                 </p>
                             </form>
                         </div>
@@ -159,6 +171,8 @@
                 </div>
             </div>
         </div>
+
+
         <!-- latest jquery-->
         <script src="{{asset('admin_dashboard/assets/js/jquery-3.6.0.min.js')}}"></script>
         <!-- Bootstrap js-->
@@ -169,14 +183,6 @@
         <!-- scrollbar js-->
         <!-- Sidebar jquery-->
         <script src="{{asset('admin_dashboard/assets/js/config.js')}}"></script>
-        <!-- Plugins JS start-->
-        <!-- Plugins JS Ends-->
-        <!-- Theme js-->
-
-
-
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
@@ -216,6 +222,37 @@
         @endif
 
 
+
+        <script>
+            $(document).ready(function () {
+                $('#roles').change(function (e) { 
+                    e.preventDefault();
+                    console.log($(this).val());
+                    
+                    if ($(this).val() == 3) {
+                        var content =   `<div class="form-group">
+                                            <label class="form-label" for="specialty">Specialty</label>
+                                            <input class="form-control" id="specialty" name="specialty" type="text" placeholder="Specialty" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label" for="hospital">Hospital</label>
+                                            <input class="form-control" id="hospital" name="hospital" type="text" placeholder="Hospital" required>
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label class="form-label" for="desigation">Desigation</label>
+                                            <input class="form-control" id="desigation" name="desigation" type="text" placeholder="Desigation" required>
+                                        </div>`
+        
+        
+                        $('#add_body').append(content);
+                    }else{
+                        $('#add_body').empty();
+                    }
+                });
+            });
+        </script>
 
 
 
