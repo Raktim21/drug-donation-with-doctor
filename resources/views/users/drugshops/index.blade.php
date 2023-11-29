@@ -20,7 +20,7 @@ active
                     </div>
                     <div class="flex-grow-1 text-end">
                         <a class="btn btn-primary" href="{{ route('user.drugs.create') }}"> 
-                            Add New
+                            Add Medicine
                         </a>
                     </div>
                 </div>

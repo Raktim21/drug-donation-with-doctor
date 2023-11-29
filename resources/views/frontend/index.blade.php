@@ -99,7 +99,7 @@
     </div>
 </section>
 <!-- START SERVICE SECTION -->
-<section class="service-section py-5">
+{{-- <section class="service-section py-5">
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8">
@@ -117,7 +117,6 @@
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nam voluptatem nemo
                                     quibusdam ea laudantium maiores doloribus consequatur aspernatur voluptatibus
-                                    {{-- <span><a href="#">see more</a></span> --}}
                                 </p>
                             </div>
                         </div>
@@ -130,7 +129,7 @@
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nam voluptatem nemo
                                     quibusdam ea laudantium maiores doloribus consequatur aspernatur voluptatibus
-                                    {{-- <span><a href="#">see more</a></span> --}}
+                                    
                                 </p>
                             </div>
                         </div>
@@ -143,7 +142,7 @@
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nam voluptatem nemo
                                     quibusdam ea laudantium maiores doloribus consequatur aspernatur voluptatibus
-                                    {{-- <span><a href="#">see more</a></span> --}}
+                                    
                                 </p>
                             </div>
                         </div>
@@ -156,7 +155,7 @@
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nam voluptatem nemo
                                     quibusdam ea laudantium maiores doloribus consequatur aspernatur voluptatibus
-                                    {{-- <span><a href="#">see more</a></span> --}}
+                                    
                                 </p>
                             </div>
                         </div>
@@ -225,7 +224,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- END SERVICE SECTION -->
 <!--    33333333333333333333333333-->
 <!--start doctors area-->
