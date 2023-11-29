@@ -1,7 +1,7 @@
 <div>
     <div class="logo-wrapper">
         <a href="{{ route('admin.drug-shops.index') }}">
-            <img class="img-fluid for-light" src="{{ asset('admin_dashboard/assets/images/logo/logo.png') }}" alt="">
+            <img class="img-fluid for-light" src="{{ asset('frontend_assets/photos/Logo3.png') }}" alt="">
         </a>
         <div class="back-btn">
             <i class="fa fa-angle-left"></i>
@@ -119,3 +119,9 @@
         </div>
     </nav>
 </div>
+
+<style>
+    .logo-wrapper > a > img{
+        width: 80px
+    }
+</style>

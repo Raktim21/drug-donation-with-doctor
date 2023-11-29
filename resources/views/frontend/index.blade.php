@@ -5,21 +5,23 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8">
-                <h2 class="text-uppercase"><span class="text-light">ডাক্তারের সিরিয়াল নেওয়ার অনলাইন প্লাটফর্ম </span>
-                </h2>
-                <p class="pb-4 ser-p text-light lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-                    suscipit beatae voluptate! Ipsa voluptatibus illo dolorem incidunt, impedit enim doloremque!</p>
-                {{-- <form action="" class="form-content form-block">
+                <h1 class="text-uppercase"><span class="text-light">Welcome to Unused Medicine Donation Website </span>
+                </h1>
+                <p class="pb-4 ser-p text-light lead">এই ওয়েবসাইটের মাধ্যমে আপনার অব্যবহৃত ঔষধ অপরকে দান এবং যাদের ঔষধ কেনার সামথ্য নেই তারা গ্রহণ করতে পারবেন।</p>
+                <!-- <form action="" class="form-content form-block">
                     <div class="form-castom form-group bg-dark p-4">
                         <select class="form-control input-castom">
-                            <option>জেলা নির্বাচন</option>
+                            <option>জেলা নির্বাচন</option>.corona-bg
                         </select>
                         <select class="form-control input-castom my-2 my-lg-0">
                             <option>বিশেষঞ্জ ডাক্তার</option>
                         </select>
                         <button type="submit" class="btn src-btn"> <a href="#" class="text-light">খুঁজুন</a> </button>
                     </div>
-                </form> --}}
+                </form> -->
+            </div>
+            <div class="col-12 col-lg-4">
+            <img src="{{ asset('frontend_assets/photos/doctor.png') }}" alt="" class="img-fluid">
             </div>
             <!-- <div class="col-6 bg-dark">
                 <div class="doctor-photo">
@@ -28,9 +30,9 @@
             </div> -->
         </div>
     </div>
-    <div class="doctor d-none d-lg-block">
+    <!-- <div class="doctor d-none d-lg-block">
         <img src="{{ asset('frontend_assets/photos/doctor.png') }}" alt="" class="img-fluid">
-    </div>
+    </div> -->
 </section>
 <!-- START SEARCH SECTION -->
 <!--    start corona test section-->
@@ -43,12 +45,14 @@
             </div>
             <div class="col-12 col-lg-7">
                 <div class="corona-text">
-                    <p>স্বাগতম। এই টুলটির সাহায্যে আপনি কোভিড-১৯ বা নভেল করোনা ভাইরাস দ্বারা আক্রান্ত হবার ঝুঁকিতে আছেন
-                        কি’না, তা নিজেই মূল্যায়ন করতে পারবেন এবং ঝুঁকির মাত্রা ও করনীয় সম্পর্কেও জানতে পারবেন। তথ্য ও
-                        যোগাযোগ প্রযুক্তি বিভাগের উদ্যোগে এবং স্বাস্থ্য অধিদপ্তর এর বিশেষজ্ঞদের সহায়তায় এটি
-                        পরীক্ষামূলক ভাবে তৈরি করা হয়েছে। তবে, এই সফটওয়ার থেকে প্রাপ্ত ফলাফলকে অভিজ্ঞ ডাক্তার কর্তৃক
-                        স্বাস্থ্য পরামর্শ হিসেবে বিবেচনা করা যাবে না। সফটওয়্যারে আপনার প্রদান করা তথ্যের গোপনীয়তা
-                        বজায় রাখা হবে।</p>
+                    <h2>আমাদের সম্পর্কে</h2>
+                    <p>
+                    এই ওয়েবসাইটটি বানানোর মূল লক্ষ্য ও উদ্দেশ্য হল আত্ম মানবতার সেবা করা। 
+আমরা বিভিন্ন রোগ-বালাইয়ের জন্য ঔষধ সেবন করে থাকি। একটা পর্যায়ে গিয়ে কিছু ঔষধ উচ্ছিষ্ট হিসেবে থেকে যায়। যা পরবর্তীতে মেয়াদ উত্তীর্ণ হয়ে নষ্ট হয়ে যেতে পারে। কিন্তু এসব ঔষধ যদি কেনার সামর্থ্য নেই এমন কাউকে দিয়ে দেই। সেক্ষেত্রে আপনার অব্যবহৃত ওষুধ দানের মাধ্যমেই আরেকজনের কল্যাণ বয়ে আনবে।
+                    </p>
+                    <p>
+                    আপনি চাইলে আমাদের মাধ্যমে কোন অব্যবহৃত ঔষধ দান করতে পারবেন। কিংবা কারো দানকৃত ঔষধ গ্রহণ করতে পারবেন।
+                    </p>
                     {{-- <div class="corona-test-button pt-3">
                     <a href="step-form.html" class="btn btn-primary corona-button">করোনা টেস্ট</a>
                 </div> --}}
@@ -58,6 +62,42 @@
     </div>
 </section>
 <!--   end corona test section-->
+<section class="how-to-word py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1>কিভাবে কাজ করে ?</h1>
+        </div>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="how-work-box">
+                    <span>১</span>
+                    <h4>রেজিস্ট্রেশন</h4>
+                    <p>
+                    Sign up on our platform to connect with donors and access medicine 
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="how-work-box">
+                    <span>২</span>
+                    <h4>ঔষধের জন্য অনুরোধ/দান</h4>
+                    <p>
+                    Submit your medicine needs, and we'll match you with available 
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="how-work-box">
+                    <span>৩</span>
+                    <h4>ঔষধ গ্রহণ/প্রদান</h4>
+                    <p>
+                    Once matched, receive donated medicines conveniently at your chosen location.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- START SERVICE SECTION -->
 <section class="service-section py-5">
     <div class="container">
@@ -126,7 +166,7 @@
             <div class="col-lg-4 pt-5 d-none d-lg-block">
                 <div class="working-time py-4">
                     <div class="bg-color">
-                        <h4 class="pb-2 pl-3 text-capitalize">out working time</h4>
+                        <h4 class="pb-2 pl-3 text-capitalize">Our working time</h4>
                     </div>
 
                     <div class="row">
@@ -348,7 +388,7 @@
 
 
 <!--START TEAM GLARY SECTION -->
-<section class="team-glary-section py-5">
+<!-- <section class="team-glary-section py-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -407,43 +447,43 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- END TEAM GLARY SECTION -->
 <!-- START BOX SECTION -->
 <section class="box-section py-5">
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-content pr-2">
-                    <h3 class="text-uppercase text-light">year of expriance</h3>
-                    <h3 class="box-year">20+</h3>
+                <div class="box-content h-100">
+                    <h3 class="text-uppercase text-light">Number Of Donation</h3>
+                    <h3 class="box-year">{{$totalDonation}}+</h3>
                     <div class="box-icon">
                         <i class="fa fa-trophy"></i>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-content">
-                    <h3 class="text-uppercase text-light">number of doctor</h3>
-                    <h3 class="box-year">20+</h3>
+                <div class="box-content h-100">
+                    <h3 class="text-uppercase text-light">Number Of Request</h3>
+                    <h3 class="box-year">{{$requestCount}}+</h3>
                     <div class="box-icon box-icon-2">
                         <i class="fa fa-user-md"></i>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-content">
-                    <h3 class="text-uppercase text-light">privus awards</h3>
-                    <h3 class="box-year">20+</h3>
+                <div class="box-content h-100">
+                    <h3 class="text-uppercase text-light"> Number Of Delivered </h3>
+                    <h3 class="box-year">{{$deliverdCount}}+</h3>
                     <div class="box-icon box-icon-3">
                         <i class="fa fa-shield"></i>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-content">
-                    <h3 class="text-uppercase text-light">our happy clients</h3>
-                    <h3 class="box-year">20+</h3>
+                <div class="box-content h-100">
+                    <h3 class="text-uppercase text-light">Total Doctor</h3>
+                    <h3 class="box-year">5+</h3>
                     <div class="box-icon box-icon-4">
                         <i class="fa fa-users"></i>
                     </div>

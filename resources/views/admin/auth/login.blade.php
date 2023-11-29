@@ -109,7 +109,7 @@
                         <div class="login-card">
                             <div>
                                 <div>
-                                    <a class="logo" href="{{ route('frontend.index') }}">
+                                    <a class="logo" href="{{ route('index') }}">
                                         <img class="img-fluid for-light" src="{{asset('admin_dashboard/assets/images/logo/logo-2.png')}}" width="400" alt="loginpage">
                                     </a>
                                 </div>

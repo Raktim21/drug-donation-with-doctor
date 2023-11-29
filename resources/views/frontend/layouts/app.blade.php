@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>E-Doctor & Corona Predict</title>
+	<title>Medicine Donation</title>
 	<link rel="stylesheet" href="{{ asset('frontend_assets/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" />
@@ -27,12 +27,12 @@
 					<div class="top-nav-content">
 						<div class="d-block d-lg-inline location">
 							<span class="icons"><i class="fa fa-map-marker"></i></span>
-							<h6 class=" d-inline">Panthapath, Dhaka</h6>
+							<h6 class=" d-inline"> Satarkul, badda </h6>
 							<span class="px-3 d-none d-lg-inline">|</span>
 						</div>
 						<div class="d-block d-lg-inline mail">
 							<span class="icons"><i class="fa fa-envelope-o"></i></span>
-							<h6 class="d-inline">info@edoctor.myitbd.com</h6>
+							<h6 class="d-inline">unusedmedicine@gmail.com</h6>
 							<span class="px-3 d-none d-lg-inline">|</span>
 						</div>
 						<div class="d-block d-lg-inline contect">
@@ -70,8 +70,8 @@
 
 	<nav class="navbar navbar-dark navbar-expand-md text-light" uk-sticky="top: 200; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up navbar-style">
 		<div class="container">
-			<a class="navbar-brand text-uppercase text-light" href="">
-                <img src="{{ asset('frontend_assets/photos/Logo3.png') }}" alt="Logo" height="30px" width="30px"> E-Doctor
+			<a class="navbar-brand text-light" href="{{route('index')}}">
+                <img src="{{ asset('frontend_assets/photos/Logo3.png') }}" alt="Logo" height="30px" width="30px" class="mr-2"> Unused Medicine Donation
             </a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav">
 				<span class="navbar-toggler-icon"></span>
@@ -79,16 +79,16 @@
 			<div class="collapse navbar-collapse " id="navbarNav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active px-2">
-						<a class="nav-link text-uppercase" href="index.html">home</a>
+						<a class="nav-link text-uppercase" href="{{route('index')}}">home</a>
 					</li>
 					<li class="nav-item px-2">
-						<a class="nav-link text-uppercase" href="about.html">About Us</a>
+						<a class="nav-link text-uppercase" href="{{route('about')}}">About Us</a>
 					</li>
 					<li class="nav-item px-2">
-						<a class="nav-link text-uppercase" href="service.html">Service</a>
+						<a class="nav-link text-uppercase" href="{{route('suppopt.team')}}">Support Team</a>
 					</li>
 					<li class="nav-item px-2">
-						<a class="nav-link text-uppercase" href="contact.html">Contact</a>
+						<a class="nav-link text-uppercase" href="{{route('contact')}}">Contact</a>
 					</li>
 					
 					{{-- <li class="nav-item px-2">
@@ -119,16 +119,15 @@
 								<i class="fa fa-volume-control-phone"></i>
 							</div>
 							<div class="col-10">
-								<p class="text-light mb-0">+8801796722657</p>
-								<p class="text-light">+8801796722657</p>
+								<p class="text-light mb-0">+8801723019475</p>
+								<p class="text-light">+8801861153337</p>
 							</div>
 
 							<div class="col-2">
 								<i class="fa fa-envelope"></i>
 							</div>
 							<div class="col-10">
-								<p class="text-light mb-0">bokul66611@gmail.com</p>
-								<p class="text-light">alfahadhossain121@gmail.com</p>
+								<p class="text-light mb-0">unusedmedicine@gmail.com </p>
 							</div>
 						</div>
 					</div>
@@ -138,16 +137,11 @@
 						<div class="row">
 							<div class="col-12">
 								<h4 class="text-light text-uppercase py-3">about us</h4>
-								<p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nostrum eum expedita dolore cum assumenda enim similique facilis beatae necessitatibus?</p>
+								<p class="text-light">
+								এই ওয়েবসাইটের মাধ্যমে আপনার অব্যবহৃত ঔষধ অপরকে দান এবং যাদের ঔষধ কেনার সামথ্য নেই তারা গ্রহণ করতে পারবেন।
+								</p>
 							</div>
-							<div class="col-12 footer-logo">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#">
-									<iclass="fa fa-youtube-play"></i>
-								</a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -160,7 +154,7 @@
 									<i class="fa fa-link"></i>
 								</div>
 								<div class="col-10">
-									<a href="link-text">Lorem ipsum dolor sit amet consectetur</a>
+									<a href="https://facebook.com/sohag.475">facebook/unused_medicine_donation</a>
 								</div>
 							</div>
 							<div class="row">
@@ -168,7 +162,7 @@
 									<i class="fa fa-link"></i>
 								</div>
 								<div class="col-10">
-									<a href="link-text">Lorem ipsum dolor sit amet consectetur</a>
+								<a href="https://facebook.com/sohag.475">youtube/unused_medicine_donation</a>
 								</div>
 							</div>
 							<div class="row">
@@ -176,7 +170,7 @@
 									<i class="fa fa-link"></i>
 								</div>
 								<div class="col-10">
-									<a href="link-text">Lorem ipsum dolor sit amet consectetur</a>
+								<a href="https://facebook.com/sohag.475">twitter/unused_medicine_donation</a>
 								</div>
 							</div>
 							<div class="row">
@@ -184,17 +178,10 @@
 									<i class="fa fa-link"></i>
 								</div>
 								<div class="col-10">
-									<a href="link-text">Lorem ipsum dolor sit amet consectetur</a>
+								<a href="https://facebook.com/sohag.475">linkdin/unused_medicine_donation</a>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-2 link-footer">
-									<i class="fa fa-link"></i>
-								</div>
-								<div class="col-10">
-									<a href="link-text">Lorem ipsum dolor sit amet consectetur</a>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -210,7 +197,7 @@
 			<!-- Brand/logo -->
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<p class="text-">copyright@all-rivers</p>
+					<p class="text-">Copyright@Dhaka International University</p>
 				</a>
 
 				<!-- Links -->

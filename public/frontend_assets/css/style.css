@@ -863,3 +863,129 @@ select.list-dt:focus {
 	width: 100%;
 	object-fit: cover
 }
+/* //new */
+.how-work-box{
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+}
+.how-work-box span{
+	font-size: 100px;
+	font-weight: 700;
+	opacity: .4;
+	line-height: 80px;
+}
+.how-work-box h4{
+	margin-top: 15px;
+}
+
+/*=============
+MENAGEMENT SECTION
+===============*/
+.menagement-main-box {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.menagement-box {
+    max-width: 300px;
+    border: 1px solid rgba(248, 152, 37, 0.25);
+    margin: 0 auto;
+    text-align: center;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 15px 8px;
+    margin-bottom: 30px;
+    min-height: 320px;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.menagement-box:hover {
+    -webkit-box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    -webkit-transform: translateY(-2%);
+    transform: translateY(-2%);
+}
+
+.menagement-box h5 {
+    text-transform: capitalize;
+}
+
+.menagement-box span {
+    color: var(--sc);
+    font-weight: 600;
+    font-size: 17px;
+    display: block;
+}
+
+.menagement-box img {
+    width: auto;
+    height: 160px;
+}
+
+.menagement-details {
+    margin-top: 10px;
+}
+
+.menagement-box a {
+    display: inline-block;
+    color: var(--wc);
+    margin-top: 10px;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 5px 10px;
+    background: var(--fc)
+}
+
+.menagement-box a:hover {
+    background: rgba(248, 152, 37, 0.81);
+}
+
+.menagement-box a i {
+    margin-right: 7px;
+}
+
+.menagement-details P {
+    margin-bottom: 0;
+}
+
+.d-menagement-photo {
+    text-align: center;
+}
+
+.d-menagement-photo img {
+    max-width: 150px;
+    margin: 0 auto;
+    border: 1px solid var(--fc);
+    padding: 5px;
+}
+
+.d-menagement-head {
+    text-align: center;
+}
+
+.d-menagement-head h5 {
+    text-transform: capitalize;
+    color: var(--sc);
+}
+
+.d-menagement-head h6 {
+    color: var(--fc);
+}
+
+.modal-header .btn-close{
+    font-weight: 800 !important;
+    color: var(--pc) !Important;
+}
+.d-menagement-details p{
+    text-align: justify;
+}
+/*=============
+END MENAGEMENT SECTION
+===============*/
+
+.copyright-section p{
+	color: #ffffff;
+}

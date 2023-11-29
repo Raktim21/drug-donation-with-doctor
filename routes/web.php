@@ -29,7 +29,10 @@ use Illuminate\Support\Facades\Route;
 
 // require __DIR__.'/auth.php';
 
-Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
+Route::get('/support-team', [FrontendController::class, 'supportTeam'])->name('suppopt.team');
 
 
 
