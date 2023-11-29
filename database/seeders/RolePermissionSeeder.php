@@ -54,6 +54,8 @@ class RolePermissionSeeder extends Seeder
             'order-place',
             'order-request-list',
             'order-request-my-order',
+            'doctor-list',
+            'doctor-appointment-list',
         ];
 
 
@@ -79,15 +81,21 @@ class RolePermissionSeeder extends Seeder
                 $permission == 'order-list' ||
                 $permission == 'order-place' ||
                 $permission == 'order-request-list' ||
-                $permission == 'order-request-my-order'
+                $permission == 'order-request-my-order' ||
+                $permission == 'doctor-list' 
             ) {
                 
                 $user->givePermissionTo($per);
                 
             }
 
-            // $doctor = Role::where('name', 'Doctor')->first();
-            // $doctor->givePermissionTo($per);
+            $doctor = Role::where('name', 'Doctor')->first();
+
+            if (
+                $permission == 'doctor-appointment-list'
+            ) {
+                $doctor->givePermissionTo($per);
+            }
         }
 
 

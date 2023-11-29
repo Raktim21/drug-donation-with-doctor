@@ -67,34 +67,70 @@
                 @endcan
                 
 
-                <li class="menu-box">
-                    <ul>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.index') }}">
-                                <i data-feather="home"></i>
-                                <span>Drug Shop</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.my-order') }}">
-                                <i data-feather="home"></i>
-                                <span>My Orers</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.requests') }}">
-                                <i data-feather="home"></i>
-                                <span>My Requests</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav active" href="{{ route('user.drugs.index') }}">
-                                <i data-feather="home"></i>
-                                <span>My Drugs</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @can('drug-list')
+                    <li class="menu-box">
+                        <ul>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.index') }}">
+                                    <i data-feather="home"></i>
+                                    <span>Drug Shop</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.my-order') }}">
+                                    <i data-feather="home"></i>
+                                    <span>My Orers</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.requests') }}">
+                                    <i data-feather="home"></i>
+                                    <span>My Requests</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('user.drugs.index') }}">
+                                    <i data-feather="home"></i>
+                                    <span>My Drugs</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
+
+                @can('doctor-list')
+                    <li class="menu-box">
+                        <ul>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('user.doctor.index') }}">
+                                    <i data-feather="home"></i>
+                                    <span>Doctors</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('user.doctor.appointment.list') }}">
+                                    <i data-feather="home"></i>
+                                    <span>Appointments</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
+
+                @can('doctor-appointment-list')
+                    <li class="menu-box">
+                        <ul>
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav active" href="{{ route('doctor.appointments.index') }}">
+                                    <i data-feather="home"></i>
+                                    <span>Requests</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
 
 
 

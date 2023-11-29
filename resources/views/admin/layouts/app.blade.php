@@ -123,7 +123,7 @@
 
                         <li class="profile-nav onhover-dropdown p-0 me-0">
                             <div class="d-flex profile-media">
-                                <img class="b-r-50" src="{{ asset('admin_dashboard/assets/images/dashboard/profile.jpg') }}" alt="">
+                                <img class="b-r-50" width="50" src="{{ asset('admin_dashboard/assets/images/dashboard/profile.png') }}" alt="">
                                 <div class="flex-grow-1">
                                     <span>{{ Auth::user()->name }}</span>
                                     <p class="mb-0 font-roboto">{{ Auth::user()->email }} <i class="middle fa fa-angle-down"></i></p>
@@ -195,7 +195,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 p-0 footer-left">
-                            <p class="mb-0">Copyright © 2023 Shariar Raktim.</p>
+                            <p class="mb-0">Copyright © 2023 Dhaka International University.</p>
                         </div>
                         <div class="col-md-6 p-0 footer-right">
                             <ul class="color-varient">

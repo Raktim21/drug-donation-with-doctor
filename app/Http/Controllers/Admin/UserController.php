@@ -32,7 +32,7 @@ class UserController extends Controller
         $request->validate([
             'name'                  => 'required',
             'email'                 => 'required|unique:users',
-            'phone'                 => 'required',
+            'phone'                 => ['required','string','regex:/^(?:\+?88|0088)?01[3-9]\d{8}$/'],
             'password_confirmation' => 'required',
             'password'              => 'required|confirmed',
             'avater'                => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',

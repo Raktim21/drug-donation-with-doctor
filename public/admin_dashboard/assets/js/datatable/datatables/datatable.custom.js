@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-    $('#basic-1').DataTable();    
+    $('#basic-1').DataTable({
+        "ordering": false
+    });    
     $('#basic-6').DataTable();
     $('#basic-9').DataTable({
         stateSave: true

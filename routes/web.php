@@ -12,8 +12,12 @@ use App\Http\Controllers\Admin\DrugRequestController;
 use App\Http\Controllers\Admin\FrontendController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Doctor\DoctorController;
+use App\Http\Controllers\DoctorAppointmentController;
+use App\Http\Controllers\DoctorAppointmrntController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\DrugShopController;
+use App\Http\Controllers\UserAppoinmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,7 +55,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     
-    // Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('update/password', [ProfileController::class, 'passwordUpdate'])->name('password.update');
@@ -92,6 +96,19 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::delete('order/my-orders/cancel/{id}', 'myOrderCancel')->name('admin.drug-shops.my-order-cancel')->middleware('permission:order-request-my-order');
         Route::get('order/requests', 'requests')->name('admin.drug-shops.requests')->middleware('permission:order-request-list');
         Route::get('order/requests/approve/{id}', 'requestApprove')->name('admin.drug-shops.requests-approve')->middleware('permission:order-request-list');
+    });
+
+
+    Route::controller(UserAppoinmentController::class)->group(function(){
+        Route::get('user/doctor/list', 'index')->name('user.doctor.index')->middleware('permission:doctor-list');
+        Route::post('user/doctor/appointment/{id}', 'makeAppointment')->name('user.doctor.appointment')->middleware('permission:doctor-list');
+        Route::get('user/doctor/appointments', 'appointments')->name('user.doctor.appointment.list')->middleware('permission:doctor-list');
+    });
+
+
+    Route::controller(DoctorAppointmentController::class)->group(function(){
+        Route::get('doctor/appointments', 'index')->name('doctor.appointments.index')->middleware('permission:doctor-appointment-list');
+        Route::post('doctor/appointments/{id}', 'store')->name('doctor.appointments.prescribe')->middleware('permission:doctor-appointment-list');
     });
 
 });
