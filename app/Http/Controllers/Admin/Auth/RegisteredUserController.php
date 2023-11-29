@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -37,17 +38,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'regex:/^(?:\+?88|0088)?01[3-9]\d{8}$/', 'unique:'.User::class],
             'role' => ['required'],
         ]);
-
-        if ($request->role == '3') {
-            $request->validate([
-                'specialty'  => 'required',
-                'hospital'   => 'required',
-                'desigation' => 'required',
-            ]);
-        }
 
         $role = Role::find($request->role);
 
@@ -60,6 +53,16 @@ class RegisteredUserController extends Controller
             'hospital'   => $request->hospital ?? null,
             'desigation' => $request->desigation ?? null,
         ]);
+
+
+        if ($role->name == 'Doctor') {
+            Doctor::create([
+                'user_id'       => $user->id,
+                'specialty'     => $request->specialty,
+                'hospital'      => $request->hospital,
+                'desigation'    => $request->desigation,
+            ]);
+        }
 
         $user->assignRole($role->name);
 

@@ -70,15 +70,15 @@ active
                                     </td>
 
                                     <td>
-                                        {{ $doctor->doctors->desigation }}
+                                        {{ $doctor->doctors->desigation ?? '' }}
                                     </td>
 
                                     <td>
-                                        {{ $doctor->doctors->hospital }}
+                                        {{ $doctor->doctors->hospital ?? '' }}
                                     </td>
 
                                     <td>
-                                        {{ $doctor->doctors->specialty }}
+                                        {{ $doctor->doctors->specialty ?? '' }}
                                     </td>
 
                                     <td>
