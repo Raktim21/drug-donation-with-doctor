@@ -63,11 +63,11 @@ active
                                     </td>
 
                                     <td>
-                                        {{ $appointment->doctor->doctors->desigation }}
+                                        {{ $appointment->doctor->doctors->desigation ?? '' }}
                                     </td>
 
                                     <td>
-                                        {{ $appointment->doctor->doctors->specialty }}
+                                        {{ $appointment->doctor->doctors->specialty ?? '' }}
                                     </td>
 
 
