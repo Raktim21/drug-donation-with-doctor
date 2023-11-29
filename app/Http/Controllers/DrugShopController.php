@@ -89,6 +89,10 @@ class DrugShopController extends Controller
         $orders->status = 1;
         $orders->save();
 
+        $drug = Drug::find($orders->drug_id);
+        $drug->quantity = $drug->quantity - $orders->quantity;
+        $drug->save();
+
         return redirect()->back()->with('success','Request approved successfully');
     }
 
