@@ -35,8 +35,8 @@ active
                                 <th scope="col">Expire date</th>
                                 <th scope="col">District</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">Donner name</th>
-                                <th scope="col">Donner Phone</th>
+                                <th scope="col">Donor name</th>
+                                <th scope="col">Donor Phone</th>
                                 {{-- <th scope="col">Status</th> --}}
                                 {{-- <th scope="col">Status</th> --}}
                                 <th scope="col">Action</th>
