@@ -79,7 +79,7 @@
                             <li class="sidebar-list">
                                 <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin.drug-shops.my-order') }}">
                                     <i data-feather="home"></i>
-                                    <span>My Orers</span>
+                                    <span>My Orders</span>
                                 </a>
                             </li>
                             <li class="sidebar-list">

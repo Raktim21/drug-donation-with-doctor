@@ -204,7 +204,7 @@
                                 <li></li>
                                 <li></li>
                             </ul>
-                            <p class="mb-0 ms-3">Hand-crafted & made with <i class="fa fa-heart font-danger"></i></p>
+                            {{-- <p class="mb-0 ms-3">Hand-crafted & made with <i class="fa fa-heart font-danger"></i></p> --}}
                         </div>
                     </div>
                 </div>

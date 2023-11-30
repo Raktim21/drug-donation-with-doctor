@@ -16,7 +16,7 @@
                  <div class="col-12 col-sm-6 col-md-4">
                     <div class="menagement-box">
                         <div class="menagement-photo">
-                            <img src="{{asset('frontend_assets/teams/amit.jpg')}}" alt="">
+                            <img src="{{asset('frontend_assets/teams/amit.jpeg')}}" alt="">
                         </div>
                         <div class="menagement-details">
                             <h5>Amit Hassan Shuvo</h5>
@@ -60,7 +60,7 @@
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="menagement-box">
                         <div class="menagement-photo">
-                            <img src="https://rnisecuritiesltd.com/public/frontend/images/menagement/default.jpg" alt="">
+                            <img src="{{asset('frontend_assets/teams/happy.jpeg')}}" alt="">
                         </div>
                         <div class="menagement-details">
                         <h5>Selina Akter Happy</h5>
@@ -76,7 +76,7 @@
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="menagement-box">
                         <div class="menagement-photo">
-                            <img src="https://rnisecuritiesltd.com/public/frontend/images/menagement/default.jpg" alt="">
+                            <img src="{{asset('frontend_assets/teams/suhi.jpeg')}}" alt="">
                         </div>
                         <div class="menagement-details">
                         <h5>Suhi Akter</h5>
